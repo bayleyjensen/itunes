@@ -4,7 +4,7 @@ import store from "../store.js";
 // @ts-ignore
 let _sandBox = axios.create({
   //TODO Change YOURNAME to your actual name
-  baseURL: "//bcw-sandbox.herokuapp.com/api/YOURNAME/songs"
+  baseURL: "//bcw-sandbox.herokuapp.com/api/BayleyJensen/songs"
 });
 
 class SongsService {
@@ -25,6 +25,7 @@ class SongsService {
       .then(res => {
         let results = res.results.map(rawData => new Song(rawData));
         store.commit("songs", results);
+        console.log(store.State.songs);
       })
       .catch(err => {
         throw new Error(err);

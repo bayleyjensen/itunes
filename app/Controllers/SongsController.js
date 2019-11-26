@@ -3,19 +3,27 @@ import SongService from "../Services/SongsService.js";
 
 //Private
 /**Draws the Search results to the page */
-function _drawResults() {}
+function _drawResults() {
+  let template = "";
+  let songs = store.State.songs;
+  songs.forEach(song => (template += song.Template));
+  document.querySelector("#songs").innerHTML = template;
+}
 /**Draws the Users saved songs to the page */
 function _drawPlaylist() {}
 
 //Public
 export default class SongsController {
   constructor() {
+    console.log("we made it to the controler");
+    store.subscribe("songs", _drawResults);
+    _drawResults;
     //TODO Don't forget to register your subscribers
   }
 
   /**Takes in the form submission event and sends the query to the service */
+  //NOTE You dont need to change the search function
   search(e) {
-    //NOTE You dont need to change this method
     e.preventDefault();
     try {
       SongService.getMusicByQuery(e.target.query.value);

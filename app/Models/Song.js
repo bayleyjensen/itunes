@@ -12,7 +12,7 @@ export default class Song {
 
   get Template() {
     return /*html*/ `
-    <div class="card" style="">
+    <div class="card col-4 " style="width: 18rem;">
   <img src=${this.albumArt} class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${this.title}</h5>
